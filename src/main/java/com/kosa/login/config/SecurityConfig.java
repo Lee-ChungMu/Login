@@ -1,6 +1,7 @@
 package com.kosa.login.config;
 
 
+import com.kosa.login.security.filter.ApiCheckFilter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public ApiCheckFilter apiCheckFilter(){
+        return new ApiCheckFilter();
     }
 
     @Override
